@@ -1,113 +1,58 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Heat Index Checker</title>
-
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <style>
 body{
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg,#ff9966,#ff5e62);
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    font-family: 'Courier New', Courier, monospace;
+    align-items: center;
+    border-radius: 3%;
+    background-color: orange;
+    color: antiquewhite;
+    padding: 100px;
 }
-
-.container{
-    background:white;
-    padding:30px;
-    border-radius:10px;
-    width:350px;
-    text-align:center;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
-
-input{
-    width:100%;
-    padding:10px;
-    margin:8px 0;
-    font-size:16px;
-}
-
 button{
-    width:100%;
-    padding:10px;
-    background:#ff5e62;
-    color:white;
-    border:none;
-    font-size:16px;
-    cursor:pointer;
+    color: aquamarine;
 }
 
-button:hover{
-    background:#e34b4f;
-}
-</style>
+
+    </style>
 </head>
-
 <body>
+    <form>
+        <label> Username </label>
+        <input type="text" required placeholder="chubbycake25" id="yn">
+        <br>
+        <br>
+        <label> Password </label>
+        <input type="password" required placeholder="password">
+        <br>
+        <br>
+        <input type="submit" onclick="authenticate()">
+    </form>
 
-<div class="container">
-<h2>Heat Index Checker</h2>
 
-<input type="number" id="temperature" placeholder="Enter Temperature (°C)">
-<input type="number" id="humidity" placeholder="Enter Humidity (%)">
 
-<button onclick="checkHeatIndex()">Check Heat Index</button>
 
-</div>
+
+
+
+
 
 <script>
-function checkHeatIndex(){
+    function authenticate(){
+        var Username = document.getElementById('yn').value
+        if(Username === "chubbycake25"){
+            alert("Confirmed welcome " + Username)
+        }else{
+            alert("Incorrect you bum")
+        }
+    }
 
-let temperature = parseFloat(document.getElementById("temperature").value);
-let humidity = parseFloat(document.getElementById("humidity").value);
-
-if(isNaN(temperature) || isNaN(humidity)){
-    alert("Please enter both temperature and humidity values.");
-    return;
-}
-let heatIndex = temperature + (0.33 * humidity) - 4;
-
-let status = "";
-switch(true){
-
-    case (heatIndex <= 27):
-        status = "Comfortable / Cool";
-        break;
-
-    case (heatIndex >= 28 && heatIndex <= 32):
-        status = "Warm";
-        break;
-
-    case (heatIndex >= 33 && heatIndex <= 37):
-        status = "Hot";
-        break;
-
-    case (heatIndex >= 38 && heatIndex <= 41):
-        status = "Very Hot / Caution";
-        break;
-
-    case (heatIndex >= 42):
-        status = "Extreme Heat / Danger";
-        break;
-
-    default:
-        status = "Unknown condition";
-}
-alert(
-"Temperature: " + temperature + "°C\n" +
-"Humidity: " + humidity + "%\n\n" +
-"Heat Index: " + heatIndex.toFixed(2) + "°C\n" +
-"Status: " + status
-);
-
-}
 </script>
+
 
 </body>
 </html>
-```
